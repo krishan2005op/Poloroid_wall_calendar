@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1e293b;
+}
+
+.sticky-note {
+  background: linear-gradient(160deg, #fff8bd, #ffe88f);
+  transform: rotate(-1.5deg);
+}
+
+.sticky-note-alt {
+  background: linear-gradient(160deg, #fff5b4, #ffec9b);
+  transform: rotate(1.1deg);
+}
+
+.polaroid-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.polaroid-card:hover {
+  transform: rotate(-1deg) translateY(-6px);
+}
+
+.polaroid-img {
+  transition: transform 0.45s ease;
+}
+
+.polaroid-card:hover .polaroid-img {
+  transform: scale(1.05);
+}
+
+.calendar-date-cell {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.calendar-date-cell:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px -14px rgba(71, 85, 105, 0.9);
+}
+
+.month-flip {
+  animation: monthFlip 0.32s ease;
+}
+
+@keyframes monthFlip {
+  from {
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
