@@ -150,7 +150,7 @@ http://localhost:5173
 
 ## 🌐 Live Demo
 
-(Add deployed link here if available)
+poloroid-wall-calendar-apubtav36-krishan2005ops-projects.vercel.app
 
 ---
 
