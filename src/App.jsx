@@ -44,42 +44,48 @@ function App() {
   }, [notes])
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-amber-50 via-rose-50 to-violet-50 p-4 md:p-8">
-      <div className="mx-auto max-w-7xl space-y-6">
+    <main className="min-h-screen min-h-[100dvh] w-full min-w-0 bg-gradient-to-br from-amber-50 via-rose-50 to-violet-50 px-[max(0.75rem,env(safe-area-inset-left))] py-4 pb-[max(1rem,env(safe-area-inset-bottom))] pr-[max(0.75rem,env(safe-area-inset-right))] pt-[max(1rem,env(safe-area-inset-top))] sm:px-4 sm:py-6 md:p-8">
+      <div className="mx-auto min-w-0 max-w-7xl space-y-4 sm:space-y-6">
         <header className="text-center">
-          <h1 className="font-handwritten text-4xl text-slate-800 md:text-5xl">
+          <h1 className="font-handwritten text-3xl text-slate-800 sm:text-4xl md:text-5xl">
             Polaroid Wall Calendar
           </h1>
-          <p className="mx-auto mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
+          <p className="mx-auto mt-2 max-w-2xl text-xs text-slate-600 sm:text-sm md:text-base">
             Plan your month with stylish range selection, sticky notes, and memory board vibes.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.05fr_1.4fr_1fr]">
-          <HeroImage imageUrl={monthImage} monthLabel={monthLabel} />
+        <div className="grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-[1.05fr_1.4fr_1fr]">
+          <div className="order-3 min-w-0 xl:order-none">
+            <HeroImage imageUrl={monthImage} monthLabel={monthLabel} />
+          </div>
 
-          <section className="space-y-4">
-            <RangeHighlighter selectionLabel={selectionLabel} clearRange={clearRange} />
-            <CalendarGrid
-              currentMonth={currentMonth}
-              monthLabel={monthLabel}
-              days={monthDays}
-              getRangeState={getRangeState}
-              onDateClick={onDateClick}
-              onHoverDate={setHoverDate}
-              clearHoverDate={() => setHoverDate(null)}
-              onPrevMonth={goToPreviousMonth}
-              onNextMonth={goToNextMonth}
-              noteCounts={noteCounts}
+          <div className="order-1 min-w-0 xl:order-none">
+            <section className="space-y-4">
+              <RangeHighlighter selectionLabel={selectionLabel} clearRange={clearRange} />
+              <CalendarGrid
+                currentMonth={currentMonth}
+                monthLabel={monthLabel}
+                days={monthDays}
+                getRangeState={getRangeState}
+                onDateClick={onDateClick}
+                onHoverDate={setHoverDate}
+                clearHoverDate={() => setHoverDate(null)}
+                onPrevMonth={goToPreviousMonth}
+                onNextMonth={goToNextMonth}
+                noteCounts={noteCounts}
+              />
+            </section>
+          </div>
+
+          <div className="order-2 min-w-0 xl:order-none">
+            <NotesPanel
+              selectedStartDate={selectedStartDate}
+              selectedEndDate={selectedEndDate}
+              notes={notes}
+              setNotes={setNotes}
             />
-          </section>
-
-          <NotesPanel
-            selectedStartDate={selectedStartDate}
-            selectedEndDate={selectedEndDate}
-            notes={notes}
-            setNotes={setNotes}
-          />
+          </div>
         </div>
       </div>
     </main>

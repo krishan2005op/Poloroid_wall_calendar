@@ -26,10 +26,10 @@ function DateCell({
       onClick={() => onClick(day.date)}
       onMouseEnter={() => onHover(toISODate(day.date))}
       onMouseLeave={onLeave}
-      className={`calendar-date-cell relative min-h-16 rounded-xl border border-slate-100 px-2 py-1 text-left transition ${baseClasses} ${rangeClasses} ${endpointClasses}`}
+      className={`calendar-date-cell relative min-h-[3.25rem] w-full min-w-0 max-w-full rounded-lg border border-slate-100 px-0.5 py-1 text-left transition sm:min-h-16 sm:rounded-xl sm:px-2 ${baseClasses} ${rangeClasses} ${endpointClasses}`}
     >
       <span
-        className={`text-sm font-semibold ${today && !isStart && !isEnd ? 'rounded-md bg-teal-500 px-1.5 py-0.5 text-white' : ''}`}
+        className={`text-xs font-semibold sm:text-sm ${today && !isStart && !isEnd ? 'rounded-sm bg-teal-500 px-1 py-0.5 text-white sm:rounded-md sm:px-1.5' : ''}`}
       >
         {day.date.getDate()}
       </span>

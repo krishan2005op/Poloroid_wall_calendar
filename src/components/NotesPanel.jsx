@@ -51,9 +51,9 @@ function NotesPanel({ selectedStartDate, selectedEndDate, notes, setNotes }) {
   }
 
   return (
-    <aside className="space-y-4">
-      <div className="sticky-note rounded-2xl p-4 shadow-lg">
-        <p className="mb-2 text-sm font-semibold text-amber-900">{noteTargetText}</p>
+    <aside className="min-w-0 space-y-4">
+      <div className="sticky-note rounded-2xl p-3 shadow-lg sm:p-4">
+        <p className="mb-2 text-xs font-semibold text-amber-900 sm:text-sm">{noteTargetText}</p>
         <textarea
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
@@ -65,7 +65,7 @@ function NotesPanel({ selectedStartDate, selectedEndDate, notes, setNotes }) {
           type="button"
           onClick={saveNote}
           disabled={!canCreateNote}
-          className="mt-3 rounded-lg bg-amber-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-amber-600 disabled:cursor-not-allowed disabled:bg-amber-300"
+          className="mt-3 min-h-11 w-full rounded-lg bg-amber-500 px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600 active:bg-amber-700 disabled:cursor-not-allowed disabled:bg-amber-300 sm:min-h-0 sm:w-auto"
         >
           {editingId ? 'Update Note' : 'Add Note'}
         </button>
@@ -73,23 +73,23 @@ function NotesPanel({ selectedStartDate, selectedEndDate, notes, setNotes }) {
 
       <div className="space-y-3">
         {notes.map((note) => (
-          <article key={note.id} className="sticky-note-alt rounded-2xl p-4 shadow-md">
-            <p className="text-xs font-semibold text-slate-500">
+          <article key={note.id} className="sticky-note-alt rounded-2xl p-3 shadow-md sm:p-4">
+            <p className="break-words text-xs font-semibold text-slate-500">
               {note.endDate ? `${note.startDate} to ${note.endDate}` : note.startDate}
             </p>
-            <p className="mt-2 text-sm text-slate-700">{note.content}</p>
-            <div className="mt-3 flex gap-2">
+            <p className="mt-2 break-words text-sm text-slate-700">{note.content}</p>
+            <div className="mt-3 flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={() => startEdit(note)}
-                className="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 transition hover:bg-slate-200"
+                className="min-h-10 rounded-md bg-slate-100 px-3 py-2 text-xs font-medium text-slate-700 transition hover:bg-slate-200 active:bg-slate-300 sm:min-h-0 sm:px-2 sm:py-1"
               >
                 Edit
               </button>
               <button
                 type="button"
                 onClick={() => deleteNote(note.id)}
-                className="rounded-md bg-rose-100 px-2 py-1 text-xs font-medium text-rose-700 transition hover:bg-rose-200"
+                className="min-h-10 rounded-md bg-rose-100 px-3 py-2 text-xs font-medium text-rose-700 transition hover:bg-rose-200 active:bg-rose-300 sm:min-h-0 sm:px-2 sm:py-1"
               >
                 Delete
               </button>
